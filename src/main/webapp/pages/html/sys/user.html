@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>user</title>
+	<link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/static/css/global.css" media="all">
+	<link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/css/table.css" />
+</head>
+
+<body>
+<div class="admin-main">
+
+	<blockquote class="layui-elem-quote">
+		<a href="javascript: window.location.href = '/user/downExcel'" class="layui-btn layui-btn-small">
+			<i class="fa fa-shopping-cart" aria-hidden="true"></i> 格式下载
+		</a>
+		<input id="jq_file" type="file" name="file" lay-ext="txt|xls|xlsx" lay-type="file" lay-title="导入信息" class="layui-upload-file">
+		<a href="javascript:;" class="layui-btn layui-btn-small" style="margin-left: 10px;" onclick="addPage.open(false);">
+			<i class="layui-icon">&#xe608;</i> 添加信息
+		</a>
+		<a href="javascript: window.location.href = '/user/export'" class="layui-btn layui-btn-small">
+			<i class="fa fa-shopping-cart" aria-hidden="true"></i> 导出信息
+		</a>
+		<div class="layui-inline">
+			<div class="layui-input-inline" style="width: 200px;margin: 0 10px 0 30px;">
+				<input type="text" id="searchValue" name="search" placeholder="搜索请输入用户名..." autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<a href="javascript:;" class="layui-btn layui-btn-small" onclick="userPage.onSearch();">
+			<i class="layui-icon">&#xe615;</i> 搜索
+		</a>
+
+	</blockquote>
+	<fieldset class="layui-elem-field">
+		<legend>数据列表</legend>
+		<div class="layui-field-box layui-form">
+			<table id="jq_table" url="/user/queryList.htm" class="layui-table admin-table">
+				<thead>
+				<tr>
+					<th numb="true" style="width: 30px;">序号</th>
+					<th formatter="account">账号</th>
+					<th field="name">姓名</th>
+					<th formatter="roleId">角色</th>
+					<th field="createTime">创建时间</th>
+					<th formatter="operate">操作</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</fieldset>
+</div>
+</body>
+
+<script type="text/javascript" src="/static/plugins/layui/layui.all.js"></script>
+<script type="text/javascript" src="/static/js/utils/paging.js"></script>
+<script type="text/javascript" src="/static/js/utils.js"></script>
+<script type="text/javascript" src="/static/js/sys/user.js"></script>
+
+</html>

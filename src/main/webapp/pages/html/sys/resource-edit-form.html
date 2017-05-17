@@ -1,0 +1,30 @@
+<div style="margin: 15px;">
+	<form class="layui-form">
+		<input type="hidden" id="id" name="id" >
+		<div class="layui-form-item">
+			<label class="layui-form-label">资源名称</label>
+			<div class="layui-input-block">
+				<input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入资源名称" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">资源url</label>
+			<div class="layui-input-block">
+				<input type="text" id="url" name="url" required lay-verify="required" placeholder="请输入资源url" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">资源图标</label>
+			<div class="layui-input-block">
+				<input type="text" id="resIcon" name="resIcon" required lay-verify="required" placeholder="请输入图标url" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">权限标识</label>
+			<div class="layui-input-block">
+				<input type="text" id="permission" name="permission" required lay-verify="required" placeholder="请输入权限标识" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>

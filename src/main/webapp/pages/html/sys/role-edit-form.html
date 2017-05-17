@@ -1,0 +1,18 @@
+<div style="margin: 15px;">
+	<form class="layui-form">
+		<input type="hidden" id="id" name="id" >
+		<div class="layui-form-item">
+			<label class="layui-form-label">名称</label>
+			<div class="layui-input-block">
+				<input type="text" id="name" name="name" required lay-verify="required" placeholder="请输入角色名称" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">描述</label>
+			<div class="layui-input-block">
+				<textarea id="description" name="description" required lay-verify="required" placeholder="请输入描述" autocomplete="off" class="layui-textarea" />
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>

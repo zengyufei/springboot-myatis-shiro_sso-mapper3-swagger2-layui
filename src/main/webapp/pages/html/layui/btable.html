@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>btable</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all"/>
+	<link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/css/btable.css"/>
+</head>
+
+<body style=" background-color: gainsboro;">
+
+<div style="margin:0px; background-color: white; margin:0 10px;">
+	<blockquote class="layui-elem-quote">
+		<button type="button" class="layui-btn layui-btn-small" id="getAll">
+			<i class="fa fa-plus" aria-hidden="true"></i> 添加
+		</button>
+	</blockquote>
+	<div id="content" style="width: 100%;height: 533px;"></div>
+</div>
+
+<script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+<script>
+	layui.config({
+		base: '/static/js/'
+	}).use(['btable'], function () {
+		var btable = layui.btable(),
+			$ = layui.jquery,
+			layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
+			layer = layui.layer; //获取当前窗口的layer对象;
+
+		btable.set({
+			openWait: true,
+			elem: '#content',
+			url: '/static/datas/btable_data.json',
+			pageSize: 3,
+			params: {
+				t: new Date().getTime()
+			},
+			columns: [{
+				fieldName: '昵称',
+				field: 'name'
+			}, {
+				fieldName: '加入时间',
+				field: 'createtime'
+			}, {
+				fieldName: '签名',
+				field: 'sign'
+			}, {
+				fieldName: '操作',
+				field: 'id',
+				format: function (val) {
+					var html = '<input type="button" value="编辑" data-action="edit" data-id="' + val + '" class="layui-btn layui-btn-mini" /> ' +
+						'<input type="button" value="删除" data-action="del" data-id="' + val + '" class="layui-btn layui-btn-mini layui-btn-danger" />';
+					return html;
+				}
+			}],
+			even: true,
+			//skin: 'row',
+			checkbox: false,
+			paged: true,
+			singleSelect: false,
+			onSuccess: function ($elem) {
+				$elem.children('tr').each(function () {
+					$(this).children('td:last-child').children('input').each(function () {
+						var $that = $(this);
+						var action = $that.data('action');
+						var id = $that.data('id');
+						$that.on('click', function () {
+							switch (action) {
+								case 'edit':
+									layerTips.msg(action + ":" + id);
+									break;
+								case 'del': //删除
+									layerTips.msg(action + ":" + id);
+									break;
+							}
+						});
+					});
+				});
+			}
+		});
+		btable.render();
+
+		$(window).on('resize', function (e) {
+			var $that = $(this);
+			$('#content').height($that.height() - 92);
+		}).resize();
+	});
+</script>
+</body>
+
+</html>

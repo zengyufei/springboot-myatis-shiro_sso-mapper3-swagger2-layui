@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyf.commons.mapper.sys.UserMapper">
+	<resultMap type="User" id="BaseResultMap">
+		<id property="id" column="id"/>
+		<result property="account" column="account"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="roleId" column="role_id"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+
+	<sql id="all_column_list">
+		id,account,password,name,role_id,create_time,update_time
+	</sql>
+
+	<select id="queryPages2" resultType="com.zyf.commons.entity.sys.User$VO">
+		select u.id as id, u.name as name, u.account as account, u.role_id as roleId,
+		u.create_time as createTime, u.update_time as updateTime, r.name as roleName
+		from t_user as u
+		left join t_role as r
+		on u.role_id = r.id
+	</select>
+
+</mapper>

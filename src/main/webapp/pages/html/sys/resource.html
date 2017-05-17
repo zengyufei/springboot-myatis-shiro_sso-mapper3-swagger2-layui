@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>资源管理</title>
+	<link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all"/>
+	<link rel="stylesheet" href="/static/css/main.css"/>
+	<link rel="stylesheet" href="/static/plugins/ztree/css/zTreeStyle/zTreeStyle.css"/>
+	<style type="text/css">
+		.ztree li span.button.add {
+			margin-left: 2px;
+			margin-right: -1px;
+			background-position: -144px 0;
+			vertical-align: top;
+			*vertical-align: middle
+		}
+
+		div#rMenu {
+			position: absolute;
+			visibility: hidden;
+			top: 0;
+			background-color: #555;
+			text-align: left;
+			padding: 2px;
+		}
+
+		div#rMenu ul li {
+			margin: 1px 0;
+			padding: 0 5px;
+			cursor: pointer;
+			list-style: none outside none;
+			background-color: #DFDFDF;
+		}
+	</style>
+</head>
+
+<body>
+<div class="admin-main">
+	<div class="zTreeObj">
+		<ul id="treeDemo" class="ztree"></ul>
+	</div>
+	<div id="rMenu">
+		<ul>
+			<li id="m_add" onclick="addTreeNode();">增加资源</li>
+		</ul>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="/static/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="/static/plugins/ztree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="/static/plugins/ztree/js/jquery.ztree.excheck.min.js"></script>
+<script type="text/javascript" src="/static/plugins/ztree/js/jquery.ztree.exedit.min.js"></script>
+<script type="text/javascript" src="/static/js/sys/resource.js"></script>
+</html>

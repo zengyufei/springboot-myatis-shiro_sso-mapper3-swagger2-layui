@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.zyf</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 需要生成 war 包请请修改成 war-->
+	<packaging>jar</packaging>
+
+	<name>demo</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<!-- 必须继承父类 -->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.2.RELEASE</version>
+		<relativePath/>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<!-- 将 DO 赋值给 VO 的一款工具框架 -->
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>5.5.1</version>
+		</dependency>
+
+		<dependency>
+			<!-- json 解析工具，常用 -->
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<dependency>
+			<!-- 阿里巴巴数据库连接池，还有一款更快的连接池，叫 hikaricp -->
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
+		<dependency>
+			<!--支持使用 JDBC 访问数据库-->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>tomcat-jdbc</artifactId>
+					<groupId>org.apache.tomcat</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<!--添加适用于生产环境的功能，如性能指标和监测等功能。 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- mybatis -->
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+
+		<dependency>
+			<!-- mybatis 耦合 spring -->
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<dependency>
+			<!-- mybatis 类型转换器标准实现，用来处理枚举类转换 -->
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-typehandlers-jsr310</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<!-- 极其方便的使用MyBatis单表的增删改查，支持单表操作，不支持通用的多表联合查询，足够。 -->
+			<!-- https://git.oschina.net/free/Mapper -->
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+
+		<dependency>
+			<!-- mybatis 分页插件，其实现原理是拦截器 Executor -->
+			<!-- 拦截器说明：https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/Interceptor.md -->
+			<!-- 该插件实现原理：http://blog.csdn.net/isea533/article/details/52739039-->
+			<!-- 分页插件使用说明： https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md-->
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+
+		<dependency>
+			<!-- apache 公共包，许多框架的依赖-->
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+		<dependency>
+			<!-- apache 公共文件操作上传 jar 包，许多框架的依赖-->
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<!-- apache 公共文件操作 jar 包，许多框架的依赖-->
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<dependency>
+			<!-- shiro 核心包，具体用法参考-->
+			<!-- 开涛博客： http://jinnianshilongnian.iteye.com/blog/2018398 -->
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<!-- shiro 核心补充包 WEB 相关类实现-->
+			<!-- 其中在拦截器中使用到了该包中的某些类 -->
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<!-- shiro 封装 ehcache 缓存，用于权限和登录 -->
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<!-- shiro 整合 spring -->
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.4.8</version>
+		</dependency>
+		<!-- cache end -->
+		<!-- activemq begin -->
+		<!-- activemq end -->
+
+		<dependency>
+			<!-- API 界面资源文件 -->
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<!-- API 框架，自动生成 API 网站 -->
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<!-- websocket 框架，目前没有使用的地方 -->
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>-->
+
+		<dependency>
+			<!-- ActiveMQ 消息队列框架相关依赖包 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- google 框架，常用其中缓存、判空和创建集合 -->
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
+
+		<dependency>
+			<!-- 验证框架，主要核心验证工厂 -->
+			<groupId>org.apache.bval</groupId>
+			<artifactId>org.apache.bval.bundle</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<!-- 验证注解，实现 jsr303 标准 -->
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<!-- springboot aop 依赖是核心组件 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<!--支持 Web 应用开发，包含 Tomcat 和 spring-mvc。 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- jetty must
+			 如果采用 jetty 来启动：
+			 1 需要 org.springframework.boot：spring-boot-starter-web
+			    排除org.springframework.boot：spring-boot-starter-tomcat jar包.
+			 2 打开 Bean com.zyf.ServletInitializer.servletContainer 方法
+			 3 引入 org.springframework.boot：spring-boot-starter-jetty jar包
+			-->
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<!-- jdbc 相关依赖 mysql 实现-->
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!--
+			如果采用 jetty 来启动：
+			 1 需要 org.springframework.boot：spring-boot-starter-web
+			    排除org.springframework.boot：spring-boot-starter-tomcat jar包.
+			 2 打开 Bean com.zyf.ServletInitializer.servletContainer 方法
+			 3 引入 org.springframework.boot：spring-boot-starter-jetty jar包
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.eclipse.jetty.websocket</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>-->
+		<!--<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>compile</scope>
+		</dependency>-->
+		<!--<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>compile</scope>
+		</dependency>-->
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-websocket</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.3.2.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+
+		<dependency>
+			<!-- 字节码增强工具，免去 POJO 手动添加 getter、setter -->
+			<!-- 说明： http://www.iteye.com/topic/1113871 -->
+			<!-- 较全说明： http://www.aichengxu.com/other/24590677.htm -->
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.14</version>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<!-- mnv spring-boot:run 启动时寻找的类 -->
+		<start-class>com.zyf.Application</start-class>
+		<!-- tomcat or jetty 版本设置 -->
+		<tomcat.version>8.5.6</tomcat.version>
+		<jetty.version>9.2.17.v20160517</jetty.version>
+		<jetty-jsp.version>2.2.0.v201112011158</jetty-jsp.version>
+		<!--一些默认值设置-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<!-- jar 包版本变量-->
+		<mybatis-plus.version>1.4.5</mybatis-plus.version>
+		<fastjson.version>1.2.25</fastjson.version>
+		<shiro.version>1.2.5</shiro.version>
+		<poi.version>3.10.1</poi.version>
+	</properties>
+
+	<repositories>
+		<!-- 阿里云 maven 仓库 -->
+		<repository>
+			<id>aliyun</id>
+			<name>aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<profiles>
+		<profile>
+			<!-- 用来停止maven打印警告 -->
+			<id>local</id>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<!--显性指定JDK版本-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!--跳过测试-->
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- want debug, open configuration-->
+					<jvmArguments>
+						<!-- -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005-->
+					</jvmArguments>
+				</configuration>
+				<!-- 热部署，项目下命令行执行：mvn spring-boot:run -->
+				<!--<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>springloaded</artifactId>
+						<version>1.2.6.RELEASE</version>
+					</dependency>
+				</dependencies>-->
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<configuration>
+					<webApp>
+						<contextPath>/</contextPath>
+						<descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+						<!-- jetty 避免 html、js文件之类死锁无法保存 -->
+						<defaultsDescriptor>${basedir}/src/main/resources/jetty/webdefault.xml</defaultsDescriptor>
+					</webApp>
+					<stopKey>exit</stopKey>
+					<stopPort>9090</stopPort>
+					<webAppSourceDirectory>${project.basedir}/src/main/webapp</webAppSourceDirectory>
+					<scanIntervalSeconds>1</scanIntervalSeconds>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8080</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
+						<filename>target/access.log</filename>
+						<retainDays>90</retainDays>
+						<append>false</append>
+						<extended>false</extended>
+						<logTimeZone>GMT+8:00</logTimeZone>
+					</requestLog>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+</project>
