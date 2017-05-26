@@ -101,6 +101,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.github.abel533</groupId>
+			<artifactId>entitymapper</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
 			<!-- apache 公共包，许多框架的依赖-->
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
