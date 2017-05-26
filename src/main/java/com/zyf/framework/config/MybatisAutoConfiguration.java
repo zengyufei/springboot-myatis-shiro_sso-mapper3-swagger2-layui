@@ -1,5 +1,6 @@
 package com.zyf.framework.config;
 
+import com.github.abel533.sql.SqlMapper;
 import com.github.pagehelper.PageInterceptor;
 import com.zyf.framework.config.properties.MapperRefreshProperties;
 import com.zyf.framework.config.properties.MybatisProperties;
@@ -7,6 +8,7 @@ import com.zyf.framework.plugin.MapperRefresh;
 import com.zyf.framework.plugin.PerformanceInterceptor;
 import com.zyf.framework.plugin.SqlSessionFactoryBean;
 import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.TypeHandler;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,6 +22,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -103,6 +106,20 @@ public class MybatisAutoConfiguration implements TransactionManagementConfigurer
 			factory.setMapperRefresh(mapperRefresh);
 		}
 		return factory.getObject();
+	}
+
+	@Bean(name = "sqlSession")
+	public SqlSession getSqlSession(DataSource dataSource) throws Exception {
+		SqlSessionFactory sqlSessionFactory = sqlSessionFactory(dataSource);
+		return sqlSessionFactory.openSession();
+	}
+
+	@Bean(name = "sqlMapper")
+	@Scope(value = "prototype")
+	public SqlMapper getSqlMapper(DataSource dataSource) throws Exception {
+		SqlSession sqlSession = getSqlSession(dataSource);
+		SqlMapper sqlMapper = new SqlMapper(sqlSession);
+		return sqlMapper;
 	}
 
 	/*
