@@ -1,5 +1,6 @@
 package com.zyf.admin.support.config;
 
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.zyf.admin.support.config.factory.StringToLocalDateConverter;
 import com.zyf.admin.support.config.factory.StringToLocalDateTimeConverter;
 import com.zyf.admin.support.config.properties.SpringMvcProperties;
@@ -21,7 +22,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 import javax.annotation.PostConstruct;
@@ -29,7 +29,6 @@ import javax.servlet.MultipartConfigElement;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = {"com.zyf.admin.web"})
@@ -71,8 +70,8 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 	 * @return
 	 */
 	@Bean
-	public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
-		MappingJackson2HttpMessageConverter jsonMessageConverter = new MappingJackson2HttpMessageConverter();
+	public FastJsonHttpMessageConverter mappingJackson2HttpMessageConverter() {
+		FastJsonHttpMessageConverter jsonMessageConverter = new FastJsonHttpMessageConverter();
 		List<MediaType> supportedMediaTypes = new ArrayList<>(5);
 		supportedMediaTypes.add(new MediaType("text", "html", UTF8));
 		supportedMediaTypes.add(new MediaType("text", "xml", UTF8));

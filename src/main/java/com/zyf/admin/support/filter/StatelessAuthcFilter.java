@@ -56,13 +56,15 @@ public class StatelessAuthcFilter extends AccessControlFilter {
 		if (token != null) {
 			// 刷新 cookies 登录时长，30分钟内无操作，自动登出
 			token.setTime(cookiesOutTime);
-			CookieHelper.setSSOCookie(req,res, token, false);
+			CookieHelper.setSSOCookie(req, res, token, false);
 
-			//构造一个 web subject 给当前线程使用，当前线程 subject.getPrincipal() 就能得到 user
+			// 查询身份信息
 			User user = userService.queryById(token.getId());
 			User.DTO dto = new User.DTO();
 			BeanUtils.copyProperties(user, dto);
 			dto.setResourceIds(token.getResourceIds());
+
+			//构造一个 web subject 给当前线程使用，当前线程 subject.getPrincipal() 就能得到 user
 			WebDelegatingSubject subject = getWebSubject(request, response, dto);
 			ThreadContext.bind(subject);
 		} else {
@@ -72,8 +74,8 @@ public class StatelessAuthcFilter extends AccessControlFilter {
 		return true;
 	}
 
-	private WebDelegatingSubject getWebSubject(ServletRequest request, ServletResponse response, User.DTO user) {SimplePrincipalCollection principal =
-			new SimplePrincipalCollection(user, user.getName());
+	private WebDelegatingSubject getWebSubject(ServletRequest request, ServletResponse response, User.DTO user) {
+		SimplePrincipalCollection principal = new SimplePrincipalCollection(user, user.getName());
 		return new WebDelegatingSubject(principal, true,
 		                                getHost(request), null, false,
 		                                request, response, SecurityUtils.getSecurityManager());

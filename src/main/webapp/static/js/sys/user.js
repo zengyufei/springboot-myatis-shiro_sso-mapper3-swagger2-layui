@@ -14,6 +14,13 @@ var userPage = {
 				if ("account" == field) {
 					return this.html(data.account);
 				}
+				if ("userType" == field) {
+					if(data.userType == "system"){
+						return this.html("系统用户");
+					}else if(data.userType == "normal"){
+						return this.html("普通用户");
+					}
+				}
 				if ("roleId" == field) {
 					var that = this;
 					if ($.data(paging, "roleMap")) {
