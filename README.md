@@ -6,12 +6,21 @@ Springboot 测验DEMO
 ### 使用说明
 
 1. 下载解压
-2. 导入 IDE 中（可选）
+2. IDE 安装 lombok，导入 IDE 中（可选）
 3. 修改 jdbc 属性 （数据库和脚本自动创建和导入）
 4. main 方法执行或 maven 命令 spring-boot:run 执行
 5. main 方法执行 idea 工具需要设置 Working Directory 为当前目录。
 6. 访问 http://localhost:8082/
 7. 账号/密码： admin/admin
+
+
+![png](http://img.027cgb.cn/20170603/2017669531283266847.png)
+![png](http://img.027cgb.cn/20170604/2017663601716604750.png)
+![png](http://img.027cgb.cn/20170604/2017664061784388896.png)
+![png](http://img.027cgb.cn/20170604/20176690693582882.png)
+![png](http://img.027cgb.cn/20170604/201766328175548894.png)
+![png](http://img.027cgb.cn/20170604/2017667811590026209.png)
+![png](http://img.027cgb.cn/20170604/201766688332558098.png)
 
 ### 技术选型：
 
