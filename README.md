@@ -14,13 +14,13 @@ Springboot 测验DEMO
 7. 账号/密码： admin/admin
 
 
-![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/login.png)
-![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/index.png)
-![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/user_manager.png)
-![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/user_add.png)
-![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/role_manager.png)
-![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/role_edit.png)
-![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/resource_manager.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/blob/master/tmp/img/login.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/blob/master/tmp/img/index.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/blob/master/tmp/img/user_manager.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/blob/master/tmp/img/user_add.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/blob/master/tmp/img/role_manager.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/blob/master/tmp/img/role_edit.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/blob/master/tmp/img/resource_manager.png)
 
 ### 技术选型：
 
