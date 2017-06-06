@@ -14,13 +14,13 @@ Springboot 测验DEMO
 7. 账号/密码： admin/admin
 
 
-![png](http://img.027cgb.cn/20170603/2017669531283266847.png)
-![png](http://img.027cgb.cn/20170604/2017663601716604750.png)
-![png](http://img.027cgb.cn/20170604/2017664061784388896.png)
-![png](http://img.027cgb.cn/20170604/20176690693582882.png)
-![png](http://img.027cgb.cn/20170604/201766328175548894.png)
-![png](http://img.027cgb.cn/20170604/2017667811590026209.png)
-![png](http://img.027cgb.cn/20170604/201766688332558098.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/login.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/index.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/user_manager.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/user_add.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/role_manager.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/role_edit.png)
+![image](https://github.com/zengyufei/springboot-myatis-shiro_sso-mapper3-swagger2-layui/tree/master/tmp/img/resource_manager.png)
 
 ### 技术选型：
 

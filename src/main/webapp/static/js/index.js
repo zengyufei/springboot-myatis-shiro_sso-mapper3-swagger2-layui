@@ -62,7 +62,6 @@ layui.config({
 
 	//加载用户信息
 	$.get("/queryName", function (text) {
-		console.log(text)
 		$("#jq_userName").text(text);
 	});
 
